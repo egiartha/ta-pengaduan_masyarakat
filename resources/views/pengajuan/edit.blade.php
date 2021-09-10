@@ -112,29 +112,22 @@
                                         <select required name="status" id="status" class="form-control">
                                             <option value="" selected disabled>~ Status Pengaduan ~</option>
                                             @if($value->status == '0')
-                                            <option value="0" selected>Belum di proses</option>
-                                            @else
-                                            <option value="0">Belum di proses</option>
-                                            @endif
-                                            @if($value->status == 'proses')
-                                            <option value="proses" selected>Sedang di proses</option>
-                                            @else
-                                            <option value="proses">Sedang di proses</option>
+                                            <option value="diterima" <?= $value->status == 'diterima' ? 'selected' : null ?>>Diterima</option>
+                                            <option value="ditolak" <?= $value->status == 'ditolak' ? 'selected' : null ?>>Ditolak</option>
                                             @endif
                                             @if($value->status == 'diterima')
-                                            <option value="diterima" selected>Diterima</option>
-                                            @else
-                                            <option value="diterima">Diterima</option>
+                                            <option value="proses" <?= $value->status == 'proses' ? 'selected' : null ?>>Sedang di proses</option>
+                                            <option value="selesai" <?= $value->status == 'selesai' ? 'selected' : null ?>>Selesai Diperbaiki</option>
                                             @endif
                                             @if($value->status == 'ditolak')
-                                            <option value="ditolak" selected>Ditolak</option>
-                                            @else
-                                            <option value="ditolak">Ditolak</option>
+                                            <option value="0" <?= $value->status == '0' ? 'selected' : null ?>>Belum di proses</option>
+                                            <option value="diterima" <?= $value->status == 'diterima' ? 'selected' : null ?>>Diterima</option>
+                                            @endif
+                                            @if($value->status == 'proses')
+                                            <option value="selesai" <?= $value->status == 'selesai' ? 'selected' : null ?>>Selesai Diperbaiki</option>
                                             @endif
                                             @if($value->status == 'selesai')
-                                            <option value="selesai" selected>Selesai Diperbaiki</option>
-                                            @else
-                                            <option value="selesai">Selesai Diperbaiki</option>
+                                            <option value="selesai" disabled <?= $value->status == 'selesai' ? 'selected' : null ?>>Selesai Diperbaiki</option>
                                             @endif
                                         </select>
                                     </div>

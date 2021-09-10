@@ -18,7 +18,7 @@ class IndexController extends Controller
         $pengaduan = DB::table('tb_pengaduan')
             ->join('users', function ($join) {
                 $join->on('tb_pengaduan.user_id', '=', 'users.id');
-            })
+            })->whereIn('status', ['diterima', 'proses', 'selesai'])
             ->orderBy('tgl_pengaduan', 'desc')->get();
         return view('masyarakat.index', compact('aplikasi', 'pengaduan'));
     }
