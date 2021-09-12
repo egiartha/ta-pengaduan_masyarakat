@@ -120,3 +120,18 @@
 <hr>
 
 @endforeach
+
+<table style="width:100%">
+    <tr>
+        <td style="width: 55%"></td>
+        <td style="text-align: center;">
+            <p style="margin: 20px 0px 5px !important;">Sambas, {{date('d F Y')}}</p>
+            <p class="p" style="font-weight: bold;">Plt. KEPALA DINAS PERHUBUNGAN</p>
+            <p class="p" style="font-weight: bold;">KABUPATEN SAMBAS</p>
+            <br><br><br><br><br><br>
+            <p class="p" style="font-weight: bold; text-decoration: underline;">H. INDRA GUNAWAN, S.IP</p>
+            <p class="p">Pembina Tk. I(IV/b)</p>
+            <p class="p">NIP. 19690220 199303 1 005</p>
+        </td>
+    </tr>
+</table>
