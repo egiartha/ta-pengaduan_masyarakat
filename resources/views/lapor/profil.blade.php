@@ -134,7 +134,13 @@
                                                     <input type="text" name="username" value="{{Auth::user()->username}}" class="form-control" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 mt-2"><br>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="username">Foto/Scan KTP : </label><br>
+                                                    <img width="100%" src="{{url('/database/foto_ktp/'. Auth::user()->foto_ktp)}}" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mt-2"><br>
                                                 <button class="btn btn-primary btn-sm btn-block">Ubah</button>
                                             </div>
                                         </div>
