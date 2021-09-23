@@ -11,6 +11,21 @@
         max-width: 100%;
         height: auto;
     }
+
+    .dropdown-toggle:hover::after {
+        display: inline-block !important;
+        width: 0 !important;
+        height: 0 !important;
+        margin-left: .255em !important;
+        vertical-align: .255em !important;
+        content: "" !important;
+        border-top: .3em solid !important;
+        border-right: .3em solid transparent !important;
+        border-bottom: 0 !important;
+        border-left: .3em solid transparent !important;
+        margin-bottom: 0 !important;
+        padding-top: 0 !important;
+    }
 </style>
 
 <head>
@@ -39,7 +54,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{url('/index')}}">
                 @if($aplikasi=='')
                 Aspirasi Ku
                 @else
@@ -50,26 +65,32 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{url('/index')}}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/visi')}}">Visi Misi</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Profil Kami
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('/visi')}}">Visi Misi</a>
+                            <a class="dropdown-item" href="{{url('/tentang')}}">Kontak Kami</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/lapor')}}">Lapor Dan Aspirasi</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Lapor
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('/lapor')}}">Lapor Dan Aspirasi</a>
+                            <a class="dropdown-item" href="{{url('/data_laporan')}}">Data Laporan</a>
+                        </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/data_laporan')}}">Data Laporan</a>
-                    </li>
+                    @if(Auth::check())
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/profil')}}">Profil</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/tentang')}}">Kontak Kami</a>
-                    </li>
-                    @if(Auth::check())
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fas fa-sign-out-alt"></i> &nbsp;{{ __('Logout') }}
@@ -77,7 +98,6 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
-
                     </li>
                     @else
                     <li class="nav-item">
@@ -93,59 +113,6 @@
     </nav>
 
     <section id="intro">
-        <div class="intro-container">
-            <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-
-                <ol class="carousel-indicators"></ol>
-
-                <div class="carousel-inner" role="listbox">
-
-                    <div class="carousel-item active">
-                        <div class="carousel-background"><img src="{{asset('assets/img/11 (1).jpg')}}" alt=""></div>
-                        <div class="carousel-container">
-                            <div class="carousel-content">
-                                <h2>Selamat datang </h2>
-                                <h1>Di Layanan Penerangan Jalan Umum </h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="carousel-background"><img src="{{asset('assets/img/6.jpeg ')}}" alt=""></div>
-                        <div class="carousel-container">
-                            <div class="carousel-content">
-
-                                <h2>Pantang Pulang Sebelum Terang </h2>
-                                <h1>Untuk Kabupaten Sambas Lebih Baik </h1>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="carousel-background"><img src="{{asset('assets/img/11 (3).jpg')}}" alt=""></div>
-                        <div class="carousel-container">
-                            <div class="carousel-content">
-
-                                <h2>DINAS PERHUBUNGAN KABUPATEN SAMBAS</h2>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-
-                <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-
-            </div>
-        </div>
 
 
         @yield('content')
