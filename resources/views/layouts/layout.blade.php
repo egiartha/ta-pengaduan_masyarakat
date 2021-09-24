@@ -26,6 +26,22 @@
         margin-bottom: 0 !important;
         padding-top: 0 !important;
     }
+
+    .img-top {
+        width: 30px;
+        height: 30px;
+        object-fit: cover;
+        border-radius: 999px;
+        margin-right: 10px;
+    }
+
+    .navbar-custom {
+        background-color: rgba(0, 123, 255, 0%);
+    }
+
+    #intro {
+        margin-top: -84px !important;
+    }
 </style>
 
 <head>
@@ -52,14 +68,11 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-custom">
         <div class="container">
-            <a class="navbar-brand" href="{{url('/index')}}">
-                @if($aplikasi=='')
-                Aspirasi Ku
-                @else
-                {{$aplikasi->nama_aplikasi}}
-                @endif
+            <a class="navbar-brand" href="/">
+                <img src="https://seeklogo.com/images/D/dishub-logo-8BBAFD2277-seeklogo.com.png" width="50" height="100%" class="d-inline-block align-center" alt="">
+                DINAS PERHUBUNGAN
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -88,13 +101,20 @@
                         </div>
                     </li>
                     @if(Auth::check())
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('/profil')}}">Profil</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i> &nbsp;{{ __('Logout') }}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if(Auth::user()->foto_profil == '0')
+                            <img src="{{url('assets/img/avatar.png')}}" alt="AdminLTE Logo" class="img-top">
+                            @else
+                            <img src="{{url('/database/foto_profil/'. Auth::user()->foto_profil)}}" alt="" class="img-top">
+                            @endif
+                            {{Auth::user()->nama}}
                         </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{url('/profil')}}">Profil</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fas fa-sign-out-alt"></i> &nbsp;{{ __('Logout') }}
+                            </a>
+                        </div>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
@@ -187,11 +207,29 @@
 
         <script type="text/javascript" src="{{url('assets/arsitek/scripts/main.js')}}"></script>
 </body>
+
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+<script>
+    function EasyPeasyParallax() {
+        var scrollPos = $(document).scrollTop();
+        var targetOpacity = 1;
+        scrollPos < 1000 ? targetOpacity = ((scrollPos * 100) / 10) / 2500 : targetOpacity;
+        $('.navbar-custom').css({
+            'background-color': 'rgba(0,123,255, ' + targetOpacity + ')'
+        });
+        console.log(scrollPos, targetOpacity);
+    };
+
+    $(function() {
+        $(window).scroll(function() {
+            EasyPeasyParallax();
+        });
+    })
+</script>
 @stack('scripts')
 </body>
 
