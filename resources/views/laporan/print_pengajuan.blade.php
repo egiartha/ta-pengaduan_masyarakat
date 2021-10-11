@@ -111,7 +111,7 @@
     <tr align="left">
         <th>Foto Pengaduan</th>
         <th>:</th>
-        <th><img src="{{ public_path('database/foto_pengaduan/'). $value->foto_pengaduan}}" width="200" alt="BTS"></th>
+        <th><img src="{{url('/database/foto_pengaduan/'.$value->foto_pengaduan)}}" width="200" alt="BTS"></th>
     </tr>
 
 </table>
