@@ -6,7 +6,7 @@
         <div class="carousel-inner" role="listbox">
 
             <div class="carousel-item active">
-                <div class="carousel-background"><img src="{{asset('assets/img/11 (1).jpg')}}" alt=""></div>
+                <div class="carousel-background"><img id="cr-bg" src="{{asset('assets/img/11 (1).jpg')}}" alt=""></div>
                 <div class="carousel-container">
                     <div class="carousel-content">
                         <h2>Selamat datang </h2>
@@ -29,3 +29,31 @@
 
     </div>
 </div>
+
+@push('scripts')
+
+<script>
+    carousel()
+
+    $(window).on("resize", function() {
+        carousel()
+    });
+
+    function carousel() {
+        const height = window.innerHeight
+        if (window.innerWidth <= 1024) {
+            $("#cr-bg").css({
+                'height': height,
+                'object-fit': 'cover'
+            })
+        } else {
+            $("#cr-bg").css({
+                'height': height,
+                'width': '100%',
+                'object-fit': 'fill'
+            })
+        }
+    }
+</script>
+
+@endpush

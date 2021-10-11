@@ -105,11 +105,6 @@
                                             <button type="button" tabindex="0" class="dropdown-item" data-toggle="modal" data-target="#modalAkunUsers"><i class="fas fa-users"></i> &nbsp; Foto Profil</button>
                                             <button type="button" tabindex="0" class="dropdown-item" data-toggle="modal" data-target="#modalIdentitas"><i class="fas fa-address-card"></i> &nbsp; Identitas</button>
                                             <button type="button" tabindex="0" class="dropdown-item" data-toggle="modal" data-target="#modalGantiPassword"><i class="fas fa-unlock-alt"></i> &nbsp; Ganti Password</button>
-
-                                            @if(Auth::user()->level == 'petugas')
-                                            @else
-                                            <button data-toggle="modal" data-target="#modalSettings" type="button" tabindex="0" class="dropdown-item"><i class="fas fa-cogs"></i> &nbsp; Pengaturan</button>
-                                            @endif
                                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                                 <i class="fas fa-sign-out-alt"></i> &nbsp;{{ __('Logout') }}
                                             </a>
@@ -198,7 +193,7 @@
                             <li>
                                 <a href="javascript:void(0)">
                                     <i class="metismenu-icon fas fa-database"></i>
-                                    Pengaduan
+                                    Pengaduan & Aspirasi
                                     <i class="metismenu-state-icon fas fa-angle-down caret-left"></i>
                                 </a>
                                 <ul>
@@ -257,18 +252,6 @@
                                     </li>
                                 </ul>
                             </li>
-
-                            @if(Auth::user()->level == 'petugas')
-                            @else
-                            <li class="app-sidebar__heading">App</li>
-                            <li>
-                                <a href="/settings" data-toggle="modal" data-target="#modalSettings">
-                                    <i class="metismenu-icon fas fa-cogs"></i>
-                                    Pengaturan
-                                </a>
-                            </li>
-                            @endif
-
                         </ul>
                     </div>
                 </div>
@@ -308,114 +291,6 @@
                                 <button type='button' data-toggle='tooltip' title='<?php echo  $dayList[$day] . ', ' . $tanggal ?>' data-placement='bottom' class='btn-shadow mr-3 btn btn-dark'>
                                     <i class="fas fa-calendar-times"></i>
                                 </button>
-                                <div class="d-inline-block dropdown">
-                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
-                                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                                            <i class="fa fa-business-time fa-w-20"></i>
-                                        </span>
-                                        Pengaduan
-                                    </button>
-                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-inbox"></i>
-                                                    <span>
-                                                        Belum di proses
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-warning">{{$pengajuan_belum->count()}}</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Sedang di proses
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-primary">{{$pengajuan_proses->count()}}</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Diterima
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-success">{{$pengajuan_diterima->count()}}</div>
-                                                </a>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Ditolak
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-danger">{{$pengajuan_ditolak->count()}}</div>
-                                                </a>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Selesai
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-danger">{{$pengajuan_selesai->count()}}</div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="d-inline-block dropdown">
-                                    <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn-shadow dropdown-toggle btn btn-info">
-                                        <span class="btn-icon-wrapper pr-2 opacity-7">
-                                            <i class="fa fa-business-time fa-w-20"></i>
-                                        </span>
-                                        Aspirasi
-                                    </button>
-                                    <div tabindex="-1" role="menu" aria-hidden="true" class="dropdown-menu dropdown-menu-right">
-                                        <ul class="nav flex-column">
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-inbox"></i>
-                                                    <span>
-                                                        Belum di proses
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-warning">{{$aspirasi_belum->count()}}</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Sedang di proses
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-primary">{{$aspirasi_proses->count()}}</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Diterima
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-success">{{$aspirasi_diterima->count()}}</div>
-                                                </a>
-                                            </li>
-
-                                            <li class="nav-item">
-                                                <a href="javascript:void(0);" class="nav-link text-dark">
-                                                    <i class="nav-link-icon lnr-book"></i>
-                                                    <span>
-                                                        Ditolak
-                                                    </span>
-                                                    <div class="ml-auto badge badge-pill badge-danger">{{$aspirasi_ditolak->count()}}</div>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>

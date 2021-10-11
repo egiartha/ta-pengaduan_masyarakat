@@ -38,9 +38,9 @@
                             {{ __('Login') }}
                         </button>
 
-                        <a class="btn btn-primary w-100 mb-2" href="/daftar">{{ __('Register') }}</a>
+                        <a class="btn btn-primary w-100 mb-2" href="/daftar">{{ __('Registrasi') }}</a>
                         <div class="alert alert-success" role="alert">
-                            <br>Belum punya akun? Lakukan Registerasi</br>
+                            <br>Belum punya akun? Lakukan Registrasi</br>
                         </div>
                         @if( Session::get('alert') !="")
                         <div class='alert alert-success'>

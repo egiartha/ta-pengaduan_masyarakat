@@ -36,11 +36,22 @@
     }
 
     .navbar-custom {
-        background-color: rgba(0, 123, 255, 0%);
+        background-color: rgba(22, 23, 67, 0%);
     }
 
     #intro {
         margin-top: -84px !important;
+    }
+
+    .navbar-brand-custom,
+    .nav-link-custom {
+        color: white !important;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .navbar-custom {
+            background-color: rgba(22, 23, 67 100%) !important;
+        }
     }
 </style>
 
@@ -68,9 +79,9 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg sticky-top navbar-custom">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-custom navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand navbar-brand-custom" href="/">
                 <img src="https://seeklogo.com/images/D/dishub-logo-8BBAFD2277-seeklogo.com.png" width="50" height="100%" class="d-inline-block align-center" alt="">
                 DINAS PERHUBUNGAN
             </a>
@@ -80,10 +91,10 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{url('/index')}}">Home</a>
+                        <a class="nav-link nav-link-custom active" aria-current="page" href="{{url('/index')}}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link nav-link-custom dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Profil Kami
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -92,7 +103,7 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link nav-link-custom dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Lapor
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -102,7 +113,7 @@
                     </li>
                     @if(Auth::check())
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link nav-link-custom dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             @if(Auth::user()->foto_profil == '0')
                             <img src="{{url('assets/img/avatar.png')}}" alt="AdminLTE Logo" class="img-top">
                             @else
@@ -121,7 +132,7 @@
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">
+                        <a class="nav-link nav-link-custom" href="{{ route('login') }}">
                             <i class="fas fa-sign-out-alt"></i> Login
                         </a>
                     </li>
@@ -151,18 +162,6 @@
                                 <p>Pantang Pulang Sebelum Terang</p>
                             </div>
 
-                            <div class="col-lg-4 col-md-6 footer-links">
-                                <h4>Useful Links</h4>
-                                <ul>
-                                    <li><a href="{{url('/index')}}">Home</a></li>
-                                    <li class="menu-active"><a href="{{url('/visi')}}">Visi Misi</a></li>
-                                    <li><a href="{{url('/lapor')}}">Lapor</a></li>
-                                    <li><a href="{{url('/data_laporan')}}">Data Laporan</a></li>
-                                    <li><a href="{{url('/profil')}}">Profil</a></li>
-                                    <li><a href="{{url('/tentang')}}">Kontak Kami</a></li>
-                                </ul>
-                            </div>
-
                             <div class="col-lg-4 col-md-6 footer-contact">
                                 <h4>Contact Us</h4>
                                 <p1>
@@ -175,18 +174,16 @@
                                     <strong>Phone:</strong> +1 5589 55488 55 <br>
                                     <strong>Email:</strong> dishubsambas@gmail.com<br>
                                 </p1>
+                                <h4 style="margin-top: 20px;">Jam Kerja</h4>
+                                <p1>
+                                    Senin - Kamis: 08.00 - 16.00<br>
+                                    Jum'at: 08.00 - 11.00
+                                </p1>
                             </div>
                             <div class="col-lg-4 col-md-6 footer-contact">
                                 <h4>FLLAJ SAMBAS</h4>
                                 <p1>
                                     Forum Lalu Lintas dan Angkutan Jalan sebagaimana disebutkan pada Peraturan Pemerintah Republik Indonesia Nomor 37 Tahun 2011 Tentang Forum Lalu Lintas Dan Angkutan Jalan adalah wahana koordinasi antar instansi penyelenggara lalu lintas dan angkutan jalan.
-                                </p1>
-                            </div>
-                            <div class="col-lg-4 col-md-6 footer-contact">
-                                <h4>Jam Kerja</h4>
-                                <p1>
-                                    Senin - Kamis: 08.00 - 16.00<br>
-                                    Jum'at: 08.00 - 11.00
                                 </p1>
                             </div>
                         </div>
@@ -195,7 +192,7 @@
 
                 <div class="container">
                     <div class="copyright">
-                        &copy; Copyright <strong>Dishub Sambas</strong>. All Rights Reserved
+                        2021 &copy; Copyright <strong>Dishub Sambas</strong>. All Rights Reserved
                     </div>
 
                 </div>
@@ -214,21 +211,26 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
 <script>
-    function EasyPeasyParallax() {
-        var scrollPos = $(document).scrollTop();
-        var targetOpacity = 1;
-        scrollPos < 1000 ? targetOpacity = ((scrollPos * 100) / 10) / 2500 : targetOpacity;
-        $('.navbar-custom').css({
-            'background-color': 'rgba(0,123,255, ' + targetOpacity + ')'
-        });
-        console.log(scrollPos, targetOpacity);
-    };
+    if (window.location.pathname === '/index') {
+        function EasyPeasyParallax() {
+            var scrollPos = $(document).scrollTop();
+            var targetOpacity = 1;
+            scrollPos < 1000 ? targetOpacity = ((scrollPos * 100) / 10) / 2500 : targetOpacity;
+            $('.navbar-custom').css({
+                'background-color': 'rgba(22, 23, 67, ' + targetOpacity + ')'
+            });
+        };
 
-    $(function() {
-        $(window).scroll(function() {
-            EasyPeasyParallax();
+        $(function() {
+            $(window).scroll(function() {
+                EasyPeasyParallax();
+            });
+        })
+    } else {
+        $('.navbar-custom').css({
+            'background-color': 'rgba(22, 23, 67,1)'
         });
-    })
+    }
 </script>
 @stack('scripts')
 </body>

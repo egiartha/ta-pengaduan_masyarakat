@@ -102,7 +102,7 @@
     }
 
     .timeline-aduan {
-        background-color: #007BFF;
+        background-color: rgba(22, 23, 67, 1);
         padding: 60px 0px;
         color: #fff;
     }
