@@ -85,7 +85,7 @@
                 <img src="https://seeklogo.com/images/D/dishub-logo-8BBAFD2277-seeklogo.com.png" width="50" height="100%" class="d-inline-block align-center" alt="">
                 DINAS PERHUBUNGAN
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <button id="toggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -213,8 +213,8 @@
 <script>
     if (window.location.pathname === '/index') {
         function EasyPeasyParallax() {
-            var scrollPos = $(document).scrollTop();
-            var targetOpacity = 1;
+            let scrollPos = $(document).scrollTop();
+            let targetOpacity = 1;
             scrollPos < 1000 ? targetOpacity = ((scrollPos * 100) / 10) / 2500 : targetOpacity;
             $('.navbar-custom').css({
                 'background-color': 'rgba(22, 23, 67, ' + targetOpacity + ')'
@@ -231,6 +231,14 @@
             'background-color': 'rgba(22, 23, 67,1)'
         });
     }
+
+    $('#toggler').click(function() {
+        if ($(this).hasClass('collapsed')) {
+            $('.navbar-custom').css({
+                'background-color': 'rgba(22, 23, 67,1)'
+            });
+        }
+    })
 </script>
 @stack('scripts')
 </body>

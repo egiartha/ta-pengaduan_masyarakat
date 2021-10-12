@@ -96,6 +96,8 @@
             Diterima
             @elseif($value->status=='ditolak')
             Ditolak
+            @elseif($value->statud=='selesai')
+            Selesai
             @endif
         </th>
     </tr>
