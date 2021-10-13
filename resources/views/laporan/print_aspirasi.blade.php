@@ -96,7 +96,7 @@
             Diterima
             @elseif($value->status=='ditolak')
             Ditolak
-            @elseif($value->statud=='selesai')
+            @elseif($value->status=='selesai')
             Selesai
             @endif
         </th>
@@ -111,7 +111,7 @@
     <tr align="left">
         <th>Foto Pengaduan</th>
         <th>:</th>
-        <th><img src="{{url('/database/foto_pengaduan/'.$value->foto_pengaduan)}}" width="200" alt="BTS"></th>
+        <th><img src="{{url('/database/foto_pengaduan/'.$value->foto_pengaduan)}}" width="200" alt="Foto Pengaduan"></th>
     </tr>
 
 </table>

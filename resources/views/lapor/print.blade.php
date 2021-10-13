@@ -94,6 +94,8 @@
             Diterima
             @elseif($pengaduan->status=='ditolak')
             Ditolak
+            @elseif($pengaduan->status=='selesai')
+            Selesai
             @endif
         </th>
     </tr>
