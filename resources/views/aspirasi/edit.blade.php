@@ -84,7 +84,7 @@
                     </div>
                     <div class="tab-pane" id="tanggapan" role="tabpanel" aria-labelledby="tanggapan-tab">
                         <div class="card-body">
-                            <form action="/aspirasi_update" method="post">
+                            <form action="/aspirasi_update" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
 
@@ -93,9 +93,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group">
                                             <label for="tanggapan"><b>Tanggapan :</b></label>
-                                            <textarea name="tanggapan" id="tanggapan" class="form-control">
-
-                                        </textarea>
+                                            <textarea required name="tanggapan" id="tanggapan" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     @else
@@ -135,8 +133,10 @@
                                         </select>
                                     </div>
                                     <br>
+                                    <div class="col-lg-12 mt-3" id="foto_selesai_form">
+                                    </div>
                                     <div class="col-lg-12 mt-4">
-                                        <button class="btn btn-primary btn-block">Update</button>
+                                        <button type="submit" class="btn btn-primary btn-block">Update</button>
                                     </div>
                                 </div>
                             </form>
@@ -165,6 +165,7 @@
 
         $('#status').change(function() {
             const val = $(this).val()
+            console.log(val)
             if (val === 'selesai') {
                 $('#foto_selesai_form').html(html)
             } else {

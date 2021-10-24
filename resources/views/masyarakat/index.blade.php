@@ -161,7 +161,7 @@
                     @foreach($pengaduan as $value)
                     <div class="col-md-4 mb-4">
                         <div class="card layanan">
-                            <img class="card-img-top aduan-img" src="{{ asset('database/foto_selesai').'/'. $value->foto_selesai}}" alt="Card image cap" />
+                            <img class="card-img-top aduan-img" src="{{$value->foto_selesai ? url('database/foto_selesai').'/'. $value->foto_selesai : url('/database/foto_pengaduan/'. $value->foto_pengaduan)}}" alt="Card image cap" />
                             <div class="card-body">
                                 <table class="table-aduan">
                                     <tbody>
